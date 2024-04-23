@@ -24,13 +24,13 @@ def api_url(endpoint):
     return "https://%s:%s/%s/%s" % (ACTOR_API_HOST, ACTOR_API_PORT, ACTOR_COMMON_NAME, endpoint) 
 
 def api_get(endpoint):
-    return requests.get(api_url(endpoint), verify=False, cert=ACTOR_CERTIFICATE_CHAIN_AND_KEY_PEM)
+    return requests.get(api_url(endpoint), verify=CA_CERTIFICATE_PEM, cert=ACTOR_CERTIFICATE_CHAIN_AND_KEY_PEM)
 
 def api_post(endpoint, json_data):
-    return requests.post(api_url(endpoint), None, json_data, verify=False, cert=ACTOR_CERTIFICATE_CHAIN_AND_KEY_PEM)
+    return requests.post(api_url(endpoint), None, json_data, verify=CA_CERTIFICATE_PEM, cert=ACTOR_CERTIFICATE_CHAIN_AND_KEY_PEM)
 
 def api_delete(endpoint):
-    return requests.delete(api_url(endpoint), verify=False, cert=ACTOR_CERTIFICATE_CHAIN_AND_KEY_PEM)
+    return requests.delete(api_url(endpoint), verify=CA_CERTIFICATE_PEM, cert=ACTOR_CERTIFICATE_CHAIN_AND_KEY_PEM)
 
 def api_get_delivery(id):
     return api_get("deliveries/%s" % id)
