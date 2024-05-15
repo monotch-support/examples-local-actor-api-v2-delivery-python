@@ -78,8 +78,10 @@ CMD python3 main.py
 
 Sometimes the required depenencies are missing during the installation of the `python-qpid-proton` package causing the proton module to miss SSL support. This can be checked by running the following command: 
 ```
-python3 -c "import proton; print('%s' % 'SSL present' if proton.SSL.present() else 'SSL NOT AVAILBLE')"`
+python3 -c "import proton; print('%s' % 'SSL present' if proton.SSL.present() else 'SSL NOT AVAILBLE')"
 ```
+
+After reinstalling the missing dependencies the `python-qpid-proton` package would need to be reinstalled (rebuild) using `pip install python-qpid-proton --force-reinstall --no-cache-dir`.
 
 
 ## Certificate related
